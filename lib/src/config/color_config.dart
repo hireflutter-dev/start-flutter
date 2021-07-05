@@ -66,4 +66,15 @@ class Styleguide {
   static const Color colorTransparent = Color(0xff000000);
 
   static Color white = Colors.white;
+
+  static const main = Color(0xFF1B2230);
+  static const contrast = Colors.white;
+  static const style = Colors.green;
+  // static const style = Color(0xFFE94C2B);
+  static const alternative = Color(0xFF3548A9);
+  static const gradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [style, alternative],
+  );
 }
