@@ -1,16 +1,21 @@
-# hf_flutter_starter_kit
+# Flutter started kit
 
-A new Flutter project.
+we are using clean architecture to separate three layers
 
-## Getting Started
+1. presentation
+2. domain
+3. data
 
-This project is a starting point for a Flutter application.
+Data should comes from data layer to presentation layer and call flows should goes presentation layer to data later.
 
-A few resources to get you started if this is your first Flutter project:
+Presentation layer should contains only UI stuff like widgets and screens. Domain layer should contains entity (which is data model/POJO class and it's define how we want to data for presentation layer), mapper (sometimes we need data which might combine two POJO class), BLoC (state management layer), Abstract repository, and viewmodel. Data layer should contains the implementation of repository (which decides that whether we need raw data from local or remote).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Technical design
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Architecture technical design](docs/technical_design.md)
+
+**NOTE: Please run the shell script first to `flutter pub get` and generate the code**
+
+```sh
+sh script/code_generator.sh
+```

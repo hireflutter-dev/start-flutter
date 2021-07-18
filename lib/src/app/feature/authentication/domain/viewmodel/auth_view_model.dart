@@ -71,10 +71,15 @@ class AuthViewModel extends ChangeNotifier {
     FirebaseAuth auth = FirebaseAuth.instance;
 
     // Wait for the user to complete the reCAPTCHA & for an SMS code to be sent.
-    ConfirmationResult confirmationResult =
-        await auth.signInWithPhoneNumber(phoneNumber!);
+    ConfirmationResult confirmationResult = await auth.signInWithPhoneNumber(
+        phoneNumber!,
+        RecaptchaVerifier(
+          container: 'recaptcha',
+          size: RecaptchaVerifierSize.compact,
+          theme: RecaptchaVerifierTheme.dark,
+        ));
 
-    await confirmationResult.confirm(this.verificationID);
+    await confirmationResult.confirm('123456');
     notifyListeners();
   }
 
@@ -87,6 +92,7 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<bool> phoneSignIn() async {
+    firebaseAuthInstance = FirebaseAuth.instance;
     final UserCredential userCredential =
         await firebaseAuthInstance.signInWithCredential(phoneAuthCredential!);
 
