@@ -6,11 +6,10 @@ import 'app/router/router.gr.dart';
 import 'config/theme_config.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter _appRouter = AppRouter();
     return ChangeNotifierProvider<AuthViewModel>(
       create: (context) => AuthViewModel(),
       child: MaterialApp.router(
