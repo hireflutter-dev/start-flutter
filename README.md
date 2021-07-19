@@ -1,20 +1,28 @@
-# Flutter started kit
+# Flutter starter kit
 
-we are using clean architecture to separate three layers
+Built with clean architecture and domain driven design with clear seperation of `Presentation`, `Domain` and `Data` layers.
 
-1. presentation
-2. domain
-3. data
+1. Presentation layer: Contains UI components like widgets and screens.
 
-Data should comes from data layer to presentation layer and call flows should goes presentation layer to data later.
+2. Domain layer: Contains
+    - Data model / POJO class which defines data for presentation layer
+    - Mapper: Data by combines more than one POJO class
+    - BLoC: State management layer
+    - Abstract repository
+    - View model
 
-Presentation layer should contains only UI stuff like widgets and screens. Domain layer should contains entity (which is data model/POJO class and it's define how we want to data for presentation layer), mapper (sometimes we need data which might combine two POJO class), BLoC (state management layer), Abstract repository, and viewmodel. Data layer should contains the implementation of repository (which decides that whether we need raw data from local or remote).
+3. Data layer: Contains the implementation of repository which defines the data source (local or remote)
+
+Data flows: From data layer to presentation layer
+Call flows: Presentation layer to data layer
 
 ## Technical design
 
 [Architecture technical design](docs/technical_design.md)
 
-**NOTE: Please run the shell script first to `flutter pub get` and generate the code**
+## Get started
+
+**NOTE: Please run the shell script to generate code before `flutter pub get`**
 
 ```sh
 sh script/code_generator.sh

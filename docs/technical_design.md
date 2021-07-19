@@ -1,6 +1,6 @@
 # Architecture
 
-Software architecture refers to the fundamental structures of our start kit app and the discipline of creating such structures and systems. Each structure comprises layers, relations among them, and properties of both layers and relations. It functions as a blueprint for the system and the developing project, laying out the tasks necessary to be executed by the design teams.
+Software architecture refers to the fundamental structures of our starter kit app and the discipline of creating such structures and systems. Each structure comprises layers, relations among them, and properties of both layers and relations. It functions as a blueprint for the system and the developing project, laying out the tasks necessary to be executed by the design teams.
 
 Software architecture description involves the principles and practices of modeling and representing architectures, using mechanisms such as architecture description languages, architecture viewpoints, and architecture frameworks.
 
