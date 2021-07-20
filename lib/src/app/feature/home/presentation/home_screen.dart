@@ -12,7 +12,10 @@ class HomeScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headline4,
         ),
       ),
-      body: HomeListView(),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: HomeListView(),
+      ),
     );
   }
 }
