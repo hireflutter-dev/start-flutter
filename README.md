@@ -2,7 +2,13 @@
 
 Built with clean architecture and domain driven design with clear seperation of `Presentation`, `Domain` and `Data` layers.
 
-✅ Presentation layer: Contains UI components like widgets and screens.
+✅ Presentation layer: Contains
+
+    🔆 UI components like widgets and screens
+
+    🔆 BLoC: State management layer
+
+    🔆 View model
 
 ✅ Domain layer: Contains
 
@@ -10,11 +16,7 @@ Built with clean architecture and domain driven design with clear seperation of 
 
     🔆 Mapper: Combines data from more than one data classes
 
-    🔆 BLoC: State management layer
-
     🔆 Abstract repository
-
-    🔆 View model
 
 ✅ Data layer: Contains the implementation of repository which defines the data source (local or remote)
 

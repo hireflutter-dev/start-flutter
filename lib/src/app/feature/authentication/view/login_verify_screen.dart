@@ -1,7 +1,6 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/authentication/domain/viewmodel/auth_view_model.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/authentication/view/widgets/widgets.dart';
 import 'package:hf_flutter_starter_kit/src/app/router/router_constant.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
@@ -9,6 +8,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'viewmodel/auth_view_model.dart';
 
 class LoginVerifyScreen extends StatefulWidget {
   @override
