@@ -6,7 +6,7 @@ Software architecture description involves the principles and practices of model
 
 Documenting software architecture facilitates communication between team members, captures early decisions about the high-level design, and allows reuse of design components between projects.
 
-## Clean Architecture + Domain Driven Architecture
+## Clean Architecture
 
 Clean architecture is architecture based on the book and blog by Uncle Bob. It is a combination of concepts taken from the Onion Architecture and other architectures. The main focus of the architecture is separation of concerns and scalability. It consists of four main modules: App, Domain, Data, and Device.
 
@@ -76,7 +76,7 @@ On the other hand, `Riverpod` satisfies the same requirements than `GetIt` and a
 
 [More info here](https://pub.dev/packages/flutter_clean_architecture)
 
-## Clean Architecture + Domain Driven Design
+## Clean Architecture with Domain Driven Approach and BLoC design pattern
 
 We are using the same principles as mentioned in clean architecture section. We will follow the dependency injection rules as well.
 

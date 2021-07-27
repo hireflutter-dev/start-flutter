@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/authentication/data/dial_codes.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/authentication/domain/viewmodel/auth_view_model.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 import 'package:provider/provider.dart';
 
+import 'viewmodel/auth_view_model.dart';
 import 'widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:hf_flutter_starter_kit/src/app/router/router.gr.dart';

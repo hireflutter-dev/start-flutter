@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/authentication/domain/viewmodel/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
+import 'app/feature/authentication/view/viewmodel/auth_view_model.dart';
 import 'app/router/router.gr.dart';
 import 'config/theme_config.dart';
 
