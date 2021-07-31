@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 /build/
+web/script/firebase_config.js
 
 # Web related
 lib/generated_plugin_registrant.dart
