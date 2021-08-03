@@ -31,14 +31,14 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
   }
 
   @override
-  void afterFirstLayout(BuildContext context) {
+  void afterFirstLayout(BuildContext context) async {
     final AuthViewModel authViewModel = Provider.of(context, listen: false);
     try {
       if ((defaultTargetPlatform == TargetPlatform.iOS) ||
           (defaultTargetPlatform == TargetPlatform.android)) {
         authViewModel.verifyPhoneNumber();
       } else {
-        authViewModel.signInWithPhoneNumber();
+        await authViewModel.signInWithPhoneNumber();
       }
     } catch (e) {
       /// Show snackbar
@@ -181,8 +181,10 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
             ? Styleguide.style
             : Colors.grey.shade500,
         child: _verifyButtonText(),
-        onPressed: () {
-          _onPressed(authViewModel);
+        onPressed: () async {
+          if (await authViewModel.verifySmsCodeWeb()) {
+            context.router.pushNamed(RouterConstant.homescreen);
+          }
         });
   }
 

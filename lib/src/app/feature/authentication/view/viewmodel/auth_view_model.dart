@@ -10,6 +10,7 @@ class AuthViewModel extends ChangeNotifier {
   String verificationID = '';
   int? forceResendToken;
   // int? forceResendToken;
+  ConfirmationResult? confirmationResult;
   bool codeSent = false;
   String smsCode = '';
 
@@ -71,16 +72,23 @@ class AuthViewModel extends ChangeNotifier {
     FirebaseAuth auth = FirebaseAuth.instance;
 
     // Wait for the user to complete the reCAPTCHA & for an SMS code to be sent.
-    ConfirmationResult confirmationResult = await auth.signInWithPhoneNumber(
-        phoneNumber!,
-        RecaptchaVerifier(
-          container: 'recaptcha',
-          size: RecaptchaVerifierSize.compact,
-          theme: RecaptchaVerifierTheme.dark,
-        ));
+    confirmationResult = await auth.signInWithPhoneNumber(phoneNumber!);
+  }
 
-    await confirmationResult.confirm('123456');
-    notifyListeners();
+  Future<bool> verifySmsCodeWeb() async {
+    try {
+      final UserCredential? userCredential =
+          await confirmationResult?.confirm(smsCode);
+
+      return userCredential?.user?.uid != null ? true : false;
+    } on FirebaseAuthException catch (e) {
+      if (e.message?.contains(
+              'phone auth credential is invalid. Please resend the verification code sms') ==
+          true) {
+        throw Exception('Invalid OTP');
+      }
+    }
+    return false;
   }
 
   void whenTimeOut() {
