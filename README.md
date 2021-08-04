@@ -34,7 +34,7 @@ Built with clean architecture and domain driven design with clear seperation of 
 
 2. Download the configuration file from the Firebase Console (the file is called GoogleService-Info.plist). Add this file via [this](https://firebase.flutter.dev/docs/installation/ios#installing-your-firebase-configuration-file) instruction.
 
-3. Create file (the file is called firebase_config.js). This file should contains the configuration for firebase as you can see `web/config/firebase_config.js.example`.
+3. Create file `web/config/firebase_config.js`. This file should contain the configuration for firebase as you can see web/config/firebase_config.js.example.
 
 ```js
 /// Copy and paste the following information
