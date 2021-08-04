@@ -7,8 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../feature/authentication/view/login_screen.dart' as _i4;
-import '../feature/authentication/view/login_verify_screen.dart' as _i5;
+import '../feature/authentication/presentation/login_screen.dart' as _i4;
+import '../feature/authentication/presentation/login_verify_screen.dart' as _i5;
 import '../feature/home/presentation/home_screen.dart' as _i6;
 import '../feature/splash/splash_screen.dart' as _i3;
 
