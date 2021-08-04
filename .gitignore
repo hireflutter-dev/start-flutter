@@ -30,7 +30,7 @@
 .pub-cache/
 .pub/
 /build/
-web/script/firebase_config.js
+web/config/firebase_config.js
 android/app/google-services.json
 ios/GoogleService-Info.plist
 
