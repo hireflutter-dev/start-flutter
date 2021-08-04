@@ -34,7 +34,29 @@ Built with clean architecture and domain driven design with clear seperation of 
 
 2. Download the configuration file from the Firebase Console (the file is called GoogleService-Info.plist). Add this file via [this](https://firebase.flutter.dev/docs/installation/ios#installing-your-firebase-configuration-file) instruction.
 
-3. Create file (the file is called firebase_config.js). This file should contains the configuration for firebase as you can see `firebase_config.js.example`.
+3. Create file (the file is called firebase_config.js). This file should contains the configuration for firebase as you can see `web/config/firebase_config.js.example`.
+
+```js
+/// Copy and paste the following information
+/// from your firebase console and save the file as
+/// firebase_config.js
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "<Your API Key>",
+  authDomain: "Your Auth Domain",
+  projectId: "Your Project ID",
+  storageBucket: "Your storage bucket",
+  messagingSenderId: "Your Messaging Sender ID",
+  appId: "Your App ID",
+  measurementId: "Your Measurement ID",
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+```
 
 **NOTE: Please run the shell script to generate code before `flutter pub get`**
 
