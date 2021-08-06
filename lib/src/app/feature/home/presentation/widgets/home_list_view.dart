@@ -10,7 +10,7 @@ class HomeListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       itemCount: githubUser.length,
       itemBuilder: (context, index) => HomeListTile(
         githubUser: githubUser[index],

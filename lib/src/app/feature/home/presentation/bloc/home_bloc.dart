@@ -12,7 +12,9 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required HomeRepository homeRepository})
       : _homeRepository = homeRepository,
-        super(_Initial());
+        super(const _Initial()) {
+    add(const HomeEvent.started());
+  }
 
   final HomeRepository _homeRepository;
 
@@ -21,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEvent event,
   ) async* {
     yield* event.when(started: () async* {
-      yield HomeState.loading();
+      yield const HomeState.loading();
 
       try {
         final githubUser = await _homeRepository.getUser();

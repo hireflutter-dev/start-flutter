@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class DigitTextField extends StatefulWidget {
-  final FocusNode focusNode;
-  final double height;
-  final double width;
-  final Function(String) onFilled;
-
-  DigitTextField({
+  const DigitTextField({
+    Key? key,
     required this.focusNode,
     required this.height,
     required this.width,
     required this.onFilled,
-  });
+  }) : super(key: key);
+
+  final FocusNode focusNode;
+  final double height;
+  final double width;
+  final Function(String) onFilled;
 
   @override
   _DigitTextFieldState createState() => _DigitTextFieldState();
@@ -22,17 +23,18 @@ class _DigitTextFieldState extends State<DigitTextField> {
 
   @override
   void initState() {
-    this.controller = TextEditingController();
-    this.controller.addListener(() {
-      if (this.controller.text.length == 1) {
-        widget.onFilled(this.controller.text);
+    controller = TextEditingController();
+    controller.addListener(() {
+      if (controller.text.length == 1) {
+        widget.onFilled(controller.text);
       }
     });
     super.initState();
   }
 
+  @override
   void dispose() {
-    this.controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -42,7 +44,7 @@ class _DigitTextFieldState extends State<DigitTextField> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: TextFormField(
         controller: controller,
         focusNode: widget.focusNode,

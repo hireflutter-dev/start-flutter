@@ -9,7 +9,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:hf_flutter_starter_kit/src/app/router/router.gr.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen();
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -18,7 +18,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   int _selectedDialCode = 107;
   late TextEditingController _controller;
-  
+
   @override
   void initState() {
     _controller = TextEditingController(text: '');
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 horizontal: width * 0.05,
                 vertical: height * 0.025,
               ),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Styleguide.main,
                 boxShadow: [
                   BoxShadow(
@@ -98,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: Text(
                                           (dialCodes[i]['name']!.length > 15)
@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         width: width * 0.05,
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: Text(
                                           '+' + dialCodes[i]['number']!,
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                         ],
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-                child: Logo(),
+                child: const Logo(),
               ),
               SizedBox(
                 height: height * 0.1,
@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 height: height / 13,
                 width: 8 * (width / 10),
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -211,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .bodyText1
                                       ?.copyWith(color: Styleguide.main),
                                 ),
-                                Icon(Icons.arrow_drop_down),
+                                const Icon(Icons.arrow_drop_down),
                               ],
                             ),
                           ),
@@ -223,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SizedBox(
                         height: height / 13,
                         child: TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Phone number',
                           ),
                           controller: _controller,
@@ -254,7 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         dialCodes[_selectedDialCode]['number']! +
                         ' ' +
                         _controller.text);
-                    context.router.push(LoginVerifyScreen());
+                    context.router.push(const LoginVerifyScreen());
                   }
                 },
                 child: Text(

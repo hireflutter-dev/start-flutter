@@ -7,6 +7,8 @@ import 'package:hf_flutter_starter_kit/src/app/feature/home/presentation/widgets
 import 'bloc/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,16 +20,15 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: BlocProvider<HomeBloc>(
-        create: (context) => HomeBloc(homeRepository: HomeRepositoryImpl())
-          ..add(HomeEvent.started()),
+        create: (context) => HomeBloc(homeRepository: HomeRepositoryImpl()),
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             return state.when(
               initial: () {
-                return SizedBox();
+                return const SizedBox();
               },
               loading: () {
-                return Center(
+                return const Center(
                   child: CupertinoActivityIndicator(),
                 );
               },

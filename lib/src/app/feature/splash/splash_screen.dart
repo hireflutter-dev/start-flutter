@@ -8,6 +8,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:hf_flutter_starter_kit/src/app/router/router_constant.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }

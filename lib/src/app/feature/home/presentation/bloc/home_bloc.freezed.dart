@@ -52,14 +52,12 @@ mixin _$HomeEvent {
 
 /// @nodoc
 abstract class $HomeEventCopyWith<$Res> {
-  factory $HomeEventCopyWith(
-          HomeEvent value, $Res Function(HomeEvent) then) =
+  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
       _$HomeEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HomeEventCopyWithImpl<$Res>
-    implements $HomeEventCopyWith<$Res> {
+class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
   _$HomeEventCopyWithImpl(this._value, this._then);
 
   final HomeEvent _value;

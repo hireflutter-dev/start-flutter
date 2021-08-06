@@ -15,11 +15,11 @@ class HomeListTile extends StatelessWidget {
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(32.0),
         child: FadeInImage(
-          placeholder: AssetImage(ImageConstant.logo),
-          image: NetworkImage(githubUser.avatarUrl ?? ''),
+          placeholder: const AssetImage(ImageConstant.logo),
+          image: NetworkImage(githubUser.avatar_url ?? ''),
         ),
       ),
-      subtitle: Text(githubUser.orgUrl ?? ''),
+      subtitle: Text(githubUser.organizations_url ?? ''),
     );
   }
 }

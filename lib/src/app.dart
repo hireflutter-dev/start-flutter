@@ -6,6 +6,8 @@ import 'app/router/router.gr.dart';
 import 'config/theme_config.dart';
 
 class App extends StatelessWidget {
+  App({Key? key}) : super(key: key);
+
   final AppRouter _appRouter = AppRouter();
 
   @override
