@@ -15,7 +15,7 @@ class HomeListTile extends StatelessWidget {
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(32.0),
         child: FadeInImage(
-          placeholder: AssetImage(ImageConstant.logo),
+          placeholder: const AssetImage(ImageConstant.logo),
           image: NetworkImage(githubUser.avatarUrl ?? ''),
         ),
       ),

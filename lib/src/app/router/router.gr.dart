@@ -21,22 +21,22 @@ class AppRouter extends _i1.RootStackRouter {
     SplashScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i3.SplashScreen();
+          return const _i3.SplashScreen();
         }),
     LoginScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i4.LoginScreen();
+          return const _i4.LoginScreen();
         }),
     LoginVerifyScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i5.LoginVerifyScreen();
+          return const _i5.LoginVerifyScreen();
         }),
     HomeScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i6.HomeScreen();
+          return const _i6.HomeScreen();
         })
   };
 

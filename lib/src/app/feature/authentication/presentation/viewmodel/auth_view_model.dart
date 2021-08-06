@@ -21,7 +21,7 @@ class AuthViewModel extends ChangeNotifier {
   String? phoneNumber;
 
   void setphoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+    phoneNumber = phoneNumber;
     notifyListeners();
   }
 
@@ -34,11 +34,10 @@ class AuthViewModel extends ChangeNotifier {
         phoneSignIn();
       },
       verificationFailed: (exception) {
-        this.failureException = exception;
+        failureException = exception;
 
-        this.hasFailed = false;
-        this.hasTimedOut = false;
-        print(exception.message);
+        hasFailed = false;
+        hasTimedOut = false;
 
         // Get.showSnackbar(GetBar(
         //   message: exception.message,
@@ -46,17 +45,17 @@ class AuthViewModel extends ChangeNotifier {
         // ));
       },
       codeSent: (verificationID, resendToken) {
-        this.verificationID = verificationID;
-        this.forceResendToken = resendToken;
-        this.codeSent = true;
+        verificationID = verificationID;
+        forceResendToken = resendToken;
+        codeSent = true;
       },
       codeAutoRetrievalTimeout: (verificationID) {
-        this.hasTimedOut = true;
+        hasTimedOut = true;
 
-        this.verificationID = verificationID;
+        verificationID = verificationID;
       },
       forceResendingToken: forceResendToken,
-      timeout: Duration(seconds: 30),
+      timeout: const Duration(seconds: 30),
     );
 
     if (isResend) {

@@ -3,13 +3,14 @@ import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
+    Key? key,
     required this.child,
     required this.onPressed,
     this.backgroundColor,
     this.radius,
     this.height,
     this.width,
-  });
+  }) : super(key: key);
 
   final Widget child;
   final Color? backgroundColor;

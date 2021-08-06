@@ -12,6 +12,8 @@ import 'package:provider/provider.dart';
 import 'viewmodel/auth_view_model.dart';
 
 class LoginVerifyScreen extends StatefulWidget {
+  const LoginVerifyScreen({Key? key}) : super(key: key);
+
   @override
   _LoginVerifyScreenState createState() => _LoginVerifyScreenState();
 }
@@ -59,7 +61,7 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Logo(),
+              const Logo(),
               Text(
                 'OTP sent to ${authViewModel.phoneNumber}',
               ),
@@ -72,7 +74,7 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
                   for (int i = 0; i < 6; i++)
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: DigitTextField(
                           focusNode: focusNodes[i],
                           height: width / 10,
@@ -89,7 +91,7 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
                               focusNodes[i + 1].requestFocus();
                             } else {
                               authViewModel.smsCode = '';
-                              authViewModel.digits.forEach((element) {
+                              authViewModel.digits.map((element) {
                                 authViewModel.smsCode += element;
                               });
                             }
@@ -160,16 +162,16 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
                     : "There was an error",
                 style: Theme.of(context).textTheme.headline2,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               authViewModel.failureException == null
-                  ? SizedBox(
+                  ? const SizedBox(
                       height: 25,
                       width: 25,
                       child: CupertinoActivityIndicator(),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           );
   }
