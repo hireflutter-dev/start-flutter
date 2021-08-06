@@ -1,4 +1,4 @@
-name: authentication_data
+name: api_client
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  constant:
+    path: ../constant
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:

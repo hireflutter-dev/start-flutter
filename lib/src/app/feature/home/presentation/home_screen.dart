@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Home screen',
+          'Github users',
           style: Theme.of(context).textTheme.headline4,
         ),
       ),
