@@ -1,5 +1,5 @@
+import 'package:authentication_data/authentication_data.dart';
 import 'package:flutter/material.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/authentication/data/dial_codes.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   int _selectedDialCode = 107;
   late TextEditingController _controller;
+  
   @override
   void initState() {
     _controller = TextEditingController(text: '');
