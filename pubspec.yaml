@@ -38,6 +38,13 @@ dependencies:
   firebase_core: ^1.4.0
   firebase_auth: ^3.0.1
 
+  constant:
+    path: packages/constant
+  authentication_data:
+    path: packages/authentication/authentication_data
+  authentication_domain:
+    path: packages/authentication/authentication_domain
+
 dev_dependencies:
   auto_route_generator:
   build_runner:

@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:constant/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:hf_flutter_starter_kit/src/app/core/image_constant.dart';
 import 'package:hf_flutter_starter_kit/src/app/router/router_constant.dart';
 
 class SplashScreen extends StatefulWidget {
