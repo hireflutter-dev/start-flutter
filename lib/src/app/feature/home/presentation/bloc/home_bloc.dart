@@ -12,7 +12,9 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required HomeRepository homeRepository})
       : _homeRepository = homeRepository,
-        super(const _Initial());
+        super(const _Initial()) {
+    add(const HomeEvent.started());
+  }
 
   final HomeRepository _homeRepository;
 

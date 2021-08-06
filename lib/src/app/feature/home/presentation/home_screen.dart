@@ -20,8 +20,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: BlocProvider<HomeBloc>(
-        create: (context) => HomeBloc(homeRepository: HomeRepositoryImpl())
-          ..add(const HomeEvent.started()),
+        create: (context) => HomeBloc(homeRepository: HomeRepositoryImpl()),
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             return state.when(

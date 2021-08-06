@@ -8,8 +8,8 @@ class GithubUser with _$GithubUser {
   factory GithubUser({
     int? id,
     String? login,
-    String? avatarUrl,
-    String? orgUrl,
+    String? avatar_url,
+    String? organizations_url,
   }) = _GithubUser;
 
   factory GithubUser.fromJson(Map<String, dynamic> json) =>

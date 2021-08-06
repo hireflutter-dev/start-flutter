@@ -21,12 +21,12 @@ class _$GithubUserTearOff {
   const _$GithubUserTearOff();
 
   _GithubUser call(
-      {int? id, String? login, String? avatarUrl, String? orgUrl}) {
+      {int? id, String? login, String? avatar_url, String? organizations_url}) {
     return _GithubUser(
       id: id,
       login: login,
-      avatarUrl: avatarUrl,
-      orgUrl: orgUrl,
+      avatar_url: avatar_url,
+      organizations_url: organizations_url,
     );
   }
 
@@ -42,8 +42,8 @@ const $GithubUser = _$GithubUserTearOff();
 mixin _$GithubUser {
   int? get id => throw _privateConstructorUsedError;
   String? get login => throw _privateConstructorUsedError;
-  String? get avatarUrl => throw _privateConstructorUsedError;
-  String? get orgUrl => throw _privateConstructorUsedError;
+  String? get avatar_url => throw _privateConstructorUsedError;
+  String? get organizations_url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +56,8 @@ abstract class $GithubUserCopyWith<$Res> {
   factory $GithubUserCopyWith(
           GithubUser value, $Res Function(GithubUser) then) =
       _$GithubUserCopyWithImpl<$Res>;
-  $Res call({int? id, String? login, String? avatarUrl, String? orgUrl});
+  $Res call(
+      {int? id, String? login, String? avatar_url, String? organizations_url});
 }
 
 /// @nodoc
@@ -71,8 +72,8 @@ class _$GithubUserCopyWithImpl<$Res> implements $GithubUserCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? login = freezed,
-    Object? avatarUrl = freezed,
-    Object? orgUrl = freezed,
+    Object? avatar_url = freezed,
+    Object? organizations_url = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -83,13 +84,13 @@ class _$GithubUserCopyWithImpl<$Res> implements $GithubUserCopyWith<$Res> {
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatarUrl: avatarUrl == freezed
-          ? _value.avatarUrl
-          : avatarUrl // ignore: cast_nullable_to_non_nullable
+      avatar_url: avatar_url == freezed
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      orgUrl: orgUrl == freezed
-          ? _value.orgUrl
-          : orgUrl // ignore: cast_nullable_to_non_nullable
+      organizations_url: organizations_url == freezed
+          ? _value.organizations_url
+          : organizations_url // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -101,7 +102,8 @@ abstract class _$GithubUserCopyWith<$Res> implements $GithubUserCopyWith<$Res> {
           _GithubUser value, $Res Function(_GithubUser) then) =
       __$GithubUserCopyWithImpl<$Res>;
   @override
-  $Res call({int? id, String? login, String? avatarUrl, String? orgUrl});
+  $Res call(
+      {int? id, String? login, String? avatar_url, String? organizations_url});
 }
 
 /// @nodoc
@@ -118,8 +120,8 @@ class __$GithubUserCopyWithImpl<$Res> extends _$GithubUserCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? login = freezed,
-    Object? avatarUrl = freezed,
-    Object? orgUrl = freezed,
+    Object? avatar_url = freezed,
+    Object? organizations_url = freezed,
   }) {
     return _then(_GithubUser(
       id: id == freezed
@@ -130,13 +132,13 @@ class __$GithubUserCopyWithImpl<$Res> extends _$GithubUserCopyWithImpl<$Res>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatarUrl: avatarUrl == freezed
-          ? _value.avatarUrl
-          : avatarUrl // ignore: cast_nullable_to_non_nullable
+      avatar_url: avatar_url == freezed
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
               as String?,
-      orgUrl: orgUrl == freezed
-          ? _value.orgUrl
-          : orgUrl // ignore: cast_nullable_to_non_nullable
+      organizations_url: organizations_url == freezed
+          ? _value.organizations_url
+          : organizations_url // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -145,7 +147,7 @@ class __$GithubUserCopyWithImpl<$Res> extends _$GithubUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_GithubUser implements _GithubUser {
-  _$_GithubUser({this.id, this.login, this.avatarUrl, this.orgUrl});
+  _$_GithubUser({this.id, this.login, this.avatar_url, this.organizations_url});
 
   factory _$_GithubUser.fromJson(Map<String, dynamic> json) =>
       _$_$_GithubUserFromJson(json);
@@ -155,13 +157,13 @@ class _$_GithubUser implements _GithubUser {
   @override
   final String? login;
   @override
-  final String? avatarUrl;
+  final String? avatar_url;
   @override
-  final String? orgUrl;
+  final String? organizations_url;
 
   @override
   String toString() {
-    return 'GithubUser(id: $id, login: $login, avatarUrl: $avatarUrl, orgUrl: $orgUrl)';
+    return 'GithubUser(id: $id, login: $login, avatar_url: $avatar_url, organizations_url: $organizations_url)';
   }
 
   @override
@@ -172,11 +174,12 @@ class _$_GithubUser implements _GithubUser {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.login, login) ||
                 const DeepCollectionEquality().equals(other.login, login)) &&
-            (identical(other.avatarUrl, avatarUrl) ||
+            (identical(other.avatar_url, avatar_url) ||
                 const DeepCollectionEquality()
-                    .equals(other.avatarUrl, avatarUrl)) &&
-            (identical(other.orgUrl, orgUrl) ||
-                const DeepCollectionEquality().equals(other.orgUrl, orgUrl)));
+                    .equals(other.avatar_url, avatar_url)) &&
+            (identical(other.organizations_url, organizations_url) ||
+                const DeepCollectionEquality()
+                    .equals(other.organizations_url, organizations_url)));
   }
 
   @override
@@ -184,8 +187,8 @@ class _$_GithubUser implements _GithubUser {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(login) ^
-      const DeepCollectionEquality().hash(avatarUrl) ^
-      const DeepCollectionEquality().hash(orgUrl);
+      const DeepCollectionEquality().hash(avatar_url) ^
+      const DeepCollectionEquality().hash(organizations_url);
 
   @JsonKey(ignore: true)
   @override
@@ -202,8 +205,8 @@ abstract class _GithubUser implements GithubUser {
   factory _GithubUser(
       {int? id,
       String? login,
-      String? avatarUrl,
-      String? orgUrl}) = _$_GithubUser;
+      String? avatar_url,
+      String? organizations_url}) = _$_GithubUser;
 
   factory _GithubUser.fromJson(Map<String, dynamic> json) =
       _$_GithubUser.fromJson;
@@ -213,9 +216,9 @@ abstract class _GithubUser implements GithubUser {
   @override
   String? get login => throw _privateConstructorUsedError;
   @override
-  String? get avatarUrl => throw _privateConstructorUsedError;
+  String? get avatar_url => throw _privateConstructorUsedError;
   @override
-  String? get orgUrl => throw _privateConstructorUsedError;
+  String? get organizations_url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GithubUserCopyWith<_GithubUser> get copyWith =>

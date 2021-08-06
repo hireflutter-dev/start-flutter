@@ -16,10 +16,10 @@ class HomeListTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(32.0),
         child: FadeInImage(
           placeholder: const AssetImage(ImageConstant.logo),
-          image: NetworkImage(githubUser.avatarUrl ?? ''),
+          image: NetworkImage(githubUser.avatar_url ?? ''),
         ),
       ),
-      subtitle: Text(githubUser.orgUrl ?? ''),
+      subtitle: Text(githubUser.organizations_url ?? ''),
     );
   }
 }
