@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:constant/constant.dart';
 import 'package:hf_flutter_starter_kit/src/app/core/failure/failure.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/github_user.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/repository/home_repo.dart';
@@ -10,7 +11,7 @@ class HomeRepositoryImpl extends HomeRepository {
   @override
   Future<List<GithubUser>?> getUser() async {
     try {
-      final url = Uri.parse('https://api.github.com/users');
+      final url = Uri.parse(APIConstant.baseUrl + 'users');
 
       final response = await http.get(url);
 
@@ -19,14 +20,14 @@ class HomeRepositoryImpl extends HomeRepository {
             .map<GithubUser>((e) => GithubUser.fromJson(e))
             .toList();
       } else if (response.statusCode == 401) {
-        throw Failure('You are not authorized to access this service');
+        throw Failure(StringConstant.unAuthorized);
       }
     } on SocketException {
-      throw Failure('No Internet connection 😑');
+      throw Failure(StringConstant.noInternet);
     } on FormatException {
-      throw Failure('Bad response format 👎');
+      throw Failure(StringConstant.badFormat);
     } catch (e) {
-      throw Failure('Something went wrong');
+      throw Failure(StringConstant.unexpectedError);
     }
   }
 }

@@ -1,5 +1,6 @@
+import 'package:constant/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:hf_flutter_starter_kit/src/app/core/image_constant.dart';
+
 import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/github_user.dart';
 
 class HomeListTile extends StatelessWidget {
