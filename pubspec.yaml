@@ -29,10 +29,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.0.1
   equatable: ^2.0.3
-  freezed_annotation: ^0.14.2
   auto_route:
   provider: ^5.0.0
   after_layout: ^1.1.0
+  http: ^0.13.3
 
   # firebase
   firebase_core: ^1.4.0
@@ -41,7 +41,9 @@ dependencies:
 dev_dependencies:
   auto_route_generator:
   build_runner:
+  json_serializable:
   freezed: ^0.14.2
+  freezed_annotation: ^0.14.2
   flutter_test:
     sdk: flutter
   lint: ^1.5.3

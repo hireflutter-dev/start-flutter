@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/product.dart';
+import 'package:hf_flutter_starter_kit/src/app/core/image_constant.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/github_user.dart';
 
 class HomeListTile extends StatelessWidget {
-  const HomeListTile({Key? key, required this.product}) : super(key: key);
+  const HomeListTile({Key? key, required this.githubUser}) : super(key: key);
 
-  final Product product;
+  final GithubUser githubUser;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(product.name ?? ''),
+      title: Text(githubUser.login ?? ''),
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(32.0),
+        child: FadeInImage(
+          placeholder: AssetImage(ImageConstant.logo),
+          image: NetworkImage(githubUser.avatarUrl ?? ''),
+        ),
+      ),
+      subtitle: Text(githubUser.orgUrl ?? ''),
     );
   }
 }
