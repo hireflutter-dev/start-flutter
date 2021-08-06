@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'homebloc_bloc.dart';
+part of 'home_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$HomeblocEventTearOff {
-  const _$HomeblocEventTearOff();
+class _$HomeEventTearOff {
+  const _$HomeEventTearOff();
 
   _Started started() {
     return const _Started();
@@ -22,10 +22,10 @@ class _$HomeblocEventTearOff {
 }
 
 /// @nodoc
-const $HomeblocEvent = _$HomeblocEventTearOff();
+const $HomeEvent = _$HomeEventTearOff();
 
 /// @nodoc
-mixin _$HomeblocEvent {
+mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
@@ -51,20 +51,20 @@ mixin _$HomeblocEvent {
 }
 
 /// @nodoc
-abstract class $HomeblocEventCopyWith<$Res> {
-  factory $HomeblocEventCopyWith(
-          HomeblocEvent value, $Res Function(HomeblocEvent) then) =
-      _$HomeblocEventCopyWithImpl<$Res>;
+abstract class $HomeEventCopyWith<$Res> {
+  factory $HomeEventCopyWith(
+          HomeEvent value, $Res Function(HomeEvent) then) =
+      _$HomeEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HomeblocEventCopyWithImpl<$Res>
-    implements $HomeblocEventCopyWith<$Res> {
-  _$HomeblocEventCopyWithImpl(this._value, this._then);
+class _$HomeEventCopyWithImpl<$Res>
+    implements $HomeEventCopyWith<$Res> {
+  _$HomeEventCopyWithImpl(this._value, this._then);
 
-  final HomeblocEvent _value;
+  final HomeEvent _value;
   // ignore: unused_field
-  final $Res Function(HomeblocEvent) _then;
+  final $Res Function(HomeEvent) _then;
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ abstract class _$StartedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$HomeblocEventCopyWithImpl<$Res>
+class __$StartedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
     implements _$StartedCopyWith<$Res> {
   __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
       : super(_value, (v) => _then(v as _Started));
@@ -90,7 +90,7 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'HomeblocEvent.started()';
+    return 'HomeEvent.started()';
   }
 
   @override
@@ -142,13 +142,13 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements HomeblocEvent {
+abstract class _Started implements HomeEvent {
   const factory _Started() = _$_Started;
 }
 
 /// @nodoc
-class _$HomeblocStateTearOff {
-  const _$HomeblocStateTearOff();
+class _$HomeStateTearOff {
+  const _$HomeStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -172,10 +172,10 @@ class _$HomeblocStateTearOff {
 }
 
 /// @nodoc
-const $HomeblocState = _$HomeblocStateTearOff();
+const $HomeState = _$HomeStateTearOff();
 
 /// @nodoc
-mixin _$HomeblocState {
+mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -213,20 +213,18 @@ mixin _$HomeblocState {
 }
 
 /// @nodoc
-abstract class $HomeblocStateCopyWith<$Res> {
-  factory $HomeblocStateCopyWith(
-          HomeblocState value, $Res Function(HomeblocState) then) =
-      _$HomeblocStateCopyWithImpl<$Res>;
+abstract class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+      _$HomeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HomeblocStateCopyWithImpl<$Res>
-    implements $HomeblocStateCopyWith<$Res> {
-  _$HomeblocStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._value, this._then);
 
-  final HomeblocState _value;
+  final HomeState _value;
   // ignore: unused_field
-  final $Res Function(HomeblocState) _then;
+  final $Res Function(HomeState) _then;
 }
 
 /// @nodoc
@@ -236,7 +234,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$HomeblocStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -252,7 +250,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'HomeblocState.initial()';
+    return 'HomeState.initial()';
   }
 
   @override
@@ -316,7 +314,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeblocState {
+abstract class _Initial implements HomeState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -327,7 +325,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$HomeblocStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -343,7 +341,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'HomeblocState.loading()';
+    return 'HomeState.loading()';
   }
 
   @override
@@ -407,7 +405,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements HomeblocState {
+abstract class _Loading implements HomeState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -419,7 +417,7 @@ abstract class _$SuccessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$HomeblocStateCopyWithImpl<$Res>
+class __$SuccessCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     implements _$SuccessCopyWith<$Res> {
   __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
       : super(_value, (v) => _then(v as _Success));
@@ -450,7 +448,7 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'HomeblocState.success(githubUser: $githubUser)';
+    return 'HomeState.success(githubUser: $githubUser)';
   }
 
   @override
@@ -524,7 +522,7 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements HomeblocState {
+abstract class _Success implements HomeState {
   const factory _Success(List<GithubUser> githubUser) = _$_Success;
 
   List<GithubUser> get githubUser => throw _privateConstructorUsedError;
@@ -541,7 +539,7 @@ abstract class _$FailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$FailureCopyWithImpl<$Res> extends _$HomeblocStateCopyWithImpl<$Res>
+class __$FailureCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     implements _$FailureCopyWith<$Res> {
   __$FailureCopyWithImpl(_Failure _value, $Res Function(_Failure) _then)
       : super(_value, (v) => _then(v as _Failure));
@@ -572,7 +570,7 @@ class _$_Failure implements _Failure {
 
   @override
   String toString() {
-    return 'HomeblocState.failure(errorMessage: $errorMessage)';
+    return 'HomeState.failure(errorMessage: $errorMessage)';
   }
 
   @override
@@ -646,7 +644,7 @@ class _$_Failure implements _Failure {
   }
 }
 
-abstract class _Failure implements HomeblocState {
+abstract class _Failure implements HomeState {
   const factory _Failure(String errorMessage) = _$_Failure;
 
   String get errorMessage => throw _privateConstructorUsedError;
