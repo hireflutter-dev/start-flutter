@@ -54,6 +54,8 @@ dev_dependencies:
   json_serializable:
   flutter_lints: ^1.0.4
   freezed: ^0.14.2
+  mocktail: ^0.1.4
+  bloc_test: ^8.1.0
   freezed_annotation: ^0.14.2
   flutter_test:
     sdk: flutter
