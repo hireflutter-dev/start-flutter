@@ -20,24 +20,20 @@ class AppRouter extends _i1.RootStackRouter {
   final Map<String, _i1.PageFactory> pagesMap = {
     SplashScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i3.SplashScreen();
-        }),
+        
+          child: _i3.SplashScreen()),
     LoginScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i4.LoginScreen();
-        }),
+        child: 
+          _i4.LoginScreen()
+        ),
     LoginVerifyScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i5.LoginVerifyScreen();
-        }),
+        child:_i5.LoginVerifyScreen()),
     HomeScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i6.HomeScreen();
-        })
+        child: _i6.HomeScreen()
+        )
   };
 
   @override
