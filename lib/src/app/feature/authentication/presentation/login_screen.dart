@@ -1,6 +1,8 @@
 import 'package:authentication_data/authentication_data.dart';
+import 'package:constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/authentication/presentation/widgets/icon_button.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 import 'package:provider/provider.dart';
 
@@ -182,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         right: width / 10,
                       ),
                       child: SingleChildScrollView(
-                        child: Column(
+                            child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -262,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: height * 0.05,
+                              height: height * 0.04,
                             ),
                             AppButton(
                               height: height / 13,
@@ -290,24 +292,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                     .headline5
                                     ?.copyWith(
                                       color: (Styleguide.colorTransparent),
-                                    )),                           
-                            AppButton(
-                               height: height / 17,
-                                onPressed: () =>
-                                  BlocProvider.of<AuthenticationBloc>(context)
-                                      .add(
-                                AuthenticationGoogleStarted(),
-                              ),
-                              child:  Text('Login with Google',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline5
-                                    ?.copyWith(
-                                      color: (Styleguide.colorTransparent),
-                                    ),
-                              ),
-                            ),
-                          ],
+                                    )),    
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                      CustomIcons(
+                                  image: ImageConstant.google,
+                                  ontap: () =>
+                                      BlocProvider.of<AuthenticationBloc>(
+                                              context)
+                                          .add(AuthenticationGoogleStarted()),
+                                ),
+                                CustomIcons(
+                                  image: ImageConstant.email,
+                                  ontap: () {
+                                    context.router.pushNamed(
+                                        RouterConstant.loginwithemail);
+                                  },
+                                )
+                                    ],)
+                            ],
                         ),
                       ),
                     ),
