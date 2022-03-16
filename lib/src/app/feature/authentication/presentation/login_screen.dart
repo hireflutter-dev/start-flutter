@@ -3,11 +3,10 @@ import 'package:constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/authentication/presentation/widgets/icon_button.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/email_authentication/presentation/bloc/email_bloc.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 import 'package:provider/provider.dart';
-
 import '../../../router/router_constant.dart';
-import '../../google_authenticaiton/bloc/authentication_bloc.dart';
 import 'viewmodel/auth_view_model.dart';
 import 'widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -162,16 +161,27 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       body: Builder(builder: (context) {
-        return BlocConsumer<AuthenticationBloc, AuthenticationState>(
+        return BlocConsumer<AuthenticationBloc, AuthState>(
+           listener: (context, state) {
+            if (state is AuthSucceed) {
+              context.router.pushNamed(RouterConstant.homescreen);
+            } else if (state is AuthFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.message),
+                ),
+              );
+            }
+          },
           buildWhen: (current, next) {
-            if (next is AuthenticationSuccess) {
+            if (next is AuthSucceed) {
               return false;
             }
             return true;
           },
           builder: (context, state) {
-            if (state is AuthenticationInitial ||
-                state is AuthenticationFailiure) {
+            if (state is AuthInitial ||
+                state is AuthFailed) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -307,7 +317,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   image: ImageConstant.email,
                                   ontap: () {
                                     context.router.pushNamed(
-                                        RouterConstant.loginwithemail);
+                                        RouterConstant.signup);
                                   },
                                 )
                                     ],)
@@ -319,23 +329,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               );
-            } else if (state is AuthenticationLoading) {
+            } else if (state is AuthLoading) {
               return const Center(child: CircularProgressIndicator());
             }
-            return Center(
-                child: Text('Undefined state : ${state.runtimeType}'));
+            return const Center(
+                child:SizedBox.shrink());
           },
-          listener: (context, state) {
-            if (state is AuthenticationSuccess) {
-              context.router.pushNamed(RouterConstant.homescreen);
-            } else if (state is AuthenticationFailiure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                ),
-              );
-            }
-          },
+         
         );
       }),
     );

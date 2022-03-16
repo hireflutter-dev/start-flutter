@@ -4,9 +4,10 @@ import 'package:hf_flutter_starter_kit/src/app/feature/authentication/presentati
 import 'package:hf_flutter_starter_kit/src/app/feature/home/presentation/home_screen.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/splash/splash_screen.dart';
 
-import '../feature/email_auth/login.dart';
-import '../feature/email_auth/register.dart';
-import '../feature/email_auth/verify.dart';
+import '../feature/email_authentication/presentation/login.dart';
+import '../feature/email_authentication/presentation/register.dart';
+import '../feature/email_authentication/presentation/verify.dart';
+
 
 /// Navigator 2.0 for our app
 @MaterialAutoRouter(
@@ -43,7 +44,7 @@ import '../feature/email_auth/verify.dart';
       name: 'Signup',
       path: '/Signup',
     ),
-    AutoRoute(
+     AutoRoute(
       page: VerifyScreen,
       name: 'VerifyScreen',
       path: '/VerifyScreen',

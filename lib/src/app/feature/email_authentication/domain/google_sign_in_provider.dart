@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInProvider {
-  final GoogleSignIn _googleSignIn;
+ 
   GoogleSignInProvider({
     required GoogleSignIn googleSignIn,
   }) : _googleSignIn = googleSignIn;
+  
+  final GoogleSignIn _googleSignIn;
 
   Future<AuthCredential> login() async {
     GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();

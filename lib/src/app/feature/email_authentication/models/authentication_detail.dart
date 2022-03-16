@@ -1,11 +1,6 @@
 import 'dart:convert';
 
 class AuthenticationDetail {
-  final bool? isValid;
-  final String? uid;
-  final String? photoUrl;
-  final String? email;
-  final String? name;
 
   AuthenticationDetail({
     required this.isValid,
@@ -14,6 +9,12 @@ class AuthenticationDetail {
     this.email,
     this.name,
   });
+
+  final bool? isValid;
+  final String? uid;
+  final String? photoUrl;
+  final String? email;
+  final String? name;
 
   AuthenticationDetail copyWith({
     bool? isValid,
@@ -62,6 +63,7 @@ class AuthenticationDetail {
   }
 
   @override
+  // ignore: avoid_renaming_method_parameters
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 

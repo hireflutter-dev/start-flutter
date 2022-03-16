@@ -8,4 +8,5 @@ class RouterConstant {
   static const signup = '/signup';
   static const homescreen = '/homescreen';
   static const verifyscreen = '/verifyscreen';
+
 }

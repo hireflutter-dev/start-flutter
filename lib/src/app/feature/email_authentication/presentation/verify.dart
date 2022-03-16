@@ -2,8 +2,11 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/authentication/presentation/widgets/app_button.dart';
-import '../../router/router_constant.dart';
+import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
+import '../../../router/router_constant.dart';
+import 'bloc/email_bloc.dart';
 
 class VerifyScreen extends StatefulWidget {
   const VerifyScreen({Key? key}) : super(key: key);
@@ -15,16 +18,21 @@ class VerifyScreen extends StatefulWidget {
 class _VerifyScreenState extends State<VerifyScreen> {
   final auth = FirebaseAuth.instance;
   late User user;
-
   late Timer timer;
 
   @override
   void initState() {
     user = auth.currentUser!;
-    user.sendEmailVerification();
-
+    context.read<AuthenticationBloc>().add(VerificationMailSent());
     timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       checkEmailVerified();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Verifying Your Email...Please Wait.."),
+          duration: Duration(seconds: 3),
+          backgroundColor: Styleguide.colorGreen_1,
+        ),
+      );
     });
     super.initState();
   }
@@ -42,13 +50,20 @@ class _VerifyScreenState extends State<VerifyScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('An email has been sent to ${user.email} please verify'),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text('An email has been sent to ${user.email} \n Please verify....',textAlign: TextAlign.center, style:Theme.of(context).textTheme.headline5!.copyWith(
+                          fontWeight: FontWeight.w400
+                        ),),
+          ),
           SizedBox(
             height: height * 0.1,
           ),
           AppButton(
               child: const Text('Resend email'),
-              onPressed: () => sendVerificationEmail()),
+              onPressed: () => context
+                  .read<AuthenticationBloc>()
+                  .add(VerificationMailSent())),
           TextButton(
               onPressed: () {
                 context.router.pushNamed(RouterConstant.loginviewscreen);
@@ -64,16 +79,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
     await user.reload();
     if (user.emailVerified) {
       timer.cancel();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content:  Text("Email Verified...."),
+          duration: Duration(seconds: 3),
+          backgroundColor: Styleguide.colorGreen_1,
+        ),
+      );
       context.router.pushNamed(RouterConstant.homescreen);
     }
-  }
-}
-
-Future<void> sendVerificationEmail() async {
-  try {
-    final user = FirebaseAuth.instance.currentUser!;
-    await user.sendEmailVerification();
-  } catch (e) {
-    print(e);
   }
 }

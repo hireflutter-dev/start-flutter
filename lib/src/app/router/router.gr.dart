@@ -6,13 +6,14 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
-import '../feature/email_auth/register.dart' as _i8;
+import '../feature/email_authentication/presentation/register.dart' as _i8;
 import '../feature/authentication/presentation/login_screen.dart' as _i4;
 import '../feature/authentication/presentation/login_verify_screen.dart' as _i5;
-import '../feature/email_auth/login.dart'as _i7;
+import '../feature/email_authentication/presentation/login.dart'as _i7;
 import '../feature/home/presentation/home_screen.dart' as _i6;
 import '../feature/splash/splash_screen.dart' as _i3;
-import '../feature/email_auth/verify.dart' as _i9;
+import '../feature/email_authentication/presentation/verify.dart' as _i9;
+
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
       : super(navigatorKey);
@@ -22,25 +23,25 @@ class AppRouter extends _i1.RootStackRouter {
     SplashScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         
-          child: _i3.SplashScreen()),
+          child: const _i3.SplashScreen()),
     LoginScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         child: 
-          _i4.LoginScreen()
+          const _i4.LoginScreen()
         ),
     LoginVerifyScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        child:_i5.LoginVerifyScreen()),
+        child:const _i5.LoginVerifyScreen()),
     HomeScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i6.HomeScreen()
+        child: const _i6.HomeScreen()
         ),
         EmailLogin.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData, child: _i7.EmailLogin()),
+        routeData: routeData, child: const _i7.EmailLogin()),
         Signup.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData, child: _i8. Signup()),
-        VerifyScreen.name: (routeData) =>
-        _i1.MaterialPageX<dynamic>(routeData: routeData, child:_i9.VerifyScreen()),
+        routeData: routeData, child: const _i8. Signup()),
+        VerifyScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData, child:const _i9. VerifyScreen()),
   };
 
   @override
