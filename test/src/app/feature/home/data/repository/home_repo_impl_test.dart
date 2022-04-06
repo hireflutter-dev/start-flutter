@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/home/data/repository/home_repo_impl.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/home/data/repository/github_user_repo_impl.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/github_user.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockHomeRepositoryImpl extends Mock implements HomeRepositoryImpl {}
+class MockHomeRepositoryImpl extends Mock implements GithubUserRepoImpl {}
 
 void main() {
   final List<GithubUser> githubUsers = [
@@ -19,11 +19,11 @@ void main() {
 
   group('home repo impl test', () {
     test('Return github users while calling getUser method', () async {
-      when(() => mockHomeRepositoryImpl.getUser()).thenAnswer(
+      when(() => mockHomeRepositoryImpl.getUsers()).thenAnswer(
         (_) => Future.value(githubUsers),
       );
 
-      final fetchGithubUsers = await mockHomeRepositoryImpl.getUser();
+      final fetchGithubUsers = await mockHomeRepositoryImpl.getUsers();
 
       expect(fetchGithubUsers, githubUsers);
     });

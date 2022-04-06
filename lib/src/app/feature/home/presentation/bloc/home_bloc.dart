@@ -3,20 +3,20 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/entity/github_user.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/repository/home_repo.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/home/domain/usecase/get_users_usecase.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 part 'home_bloc.freezed.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc({required HomeRepository homeRepository})
-      : _homeRepository = homeRepository,
+  HomeBloc({required GetUsersUseCase getUsersUseCase})
+      : _getUsersUseCase = getUsersUseCase,
         super(const _Initial()) {
     add(const HomeEvent.started());
   }
 
-  final HomeRepository _homeRepository;
+  final GetUsersUseCase _getUsersUseCase;
 
   @override
   Stream<HomeState> mapEventToState(
@@ -26,13 +26,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield const HomeState.loading();
 
       try {
-        final githubUser = await _homeRepository.getUser();
+        final githubUsers = await _getUsersUseCase.getUsers();
 
-        if (githubUser == null) {
+        if (githubUsers == null) {
           throw Exception('Something went wrong');
         }
 
-        yield HomeState.success(githubUser);
+        yield HomeState.success(githubUsers);
       } catch (e) {
         yield HomeState.failure(e.toString());
       }
