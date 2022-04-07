@@ -45,14 +45,14 @@ class AuthViewModel extends ChangeNotifier {
         // ));
       },
       codeSent: (verificationID, resendToken) {
-        verificationID = verificationID;
+        this.verificationID = verificationID;
         forceResendToken = resendToken;
         codeSent = true;
       },
       codeAutoRetrievalTimeout: (verificationID) {
         hasTimedOut = true;
 
-        verificationID = verificationID;
+        this.verificationID = verificationID;
       },
       forceResendingToken: forceResendToken,
       timeout: const Duration(seconds: 30),

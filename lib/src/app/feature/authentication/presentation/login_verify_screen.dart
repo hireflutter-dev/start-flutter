@@ -89,11 +89,6 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
                             focusNodes[i].unfocus();
                             if (i != 5) {
                               focusNodes[i + 1].requestFocus();
-                            } else {
-                              authViewModel.smsCode = '';
-                              authViewModel.digits.map((element) {
-                                authViewModel.smsCode += element;
-                              });
                             }
                           },
                         ),
@@ -184,6 +179,7 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
             : Colors.grey.shade500,
         child: _verifyButtonText(),
         onPressed: () async {
+          authViewModel.smsCode = authViewModel.digits.join();
           if (await authViewModel.verifySmsCodeWeb()) {
             context.router.pushNamed(RouterConstant.homescreen);
           }
@@ -198,6 +194,8 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
   }
 
   void _onPressed(AuthViewModel authViewModel) async {
+    authViewModel.smsCode = authViewModel.digits.join();
+
     authViewModel.phoneAuthCredential = PhoneAuthProvider.credential(
       verificationId: authViewModel.verificationID,
       smsCode: authViewModel.smsCode,
