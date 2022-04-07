@@ -250,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     /// Assign the value of [phoneNumber]
                     final AuthViewModel authViewModel =
                         Provider.of(context, listen: false);
-                    authViewModel.setphoneNumber('+' +
+                    authViewModel.setPhoneNumber('+' +
                         dialCodes[_selectedDialCode]['number']! +
                         ' ' +
                         _controller.text);
