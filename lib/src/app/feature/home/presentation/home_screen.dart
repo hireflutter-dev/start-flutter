@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hf_flutter_starter_kit/src/app/feature/home/data/repository/home_repo_impl.dart';
 import 'package:hf_flutter_starter_kit/src/app/feature/home/presentation/widgets/home_list_view.dart';
+import 'package:hf_flutter_starter_kit/src/injection/setup_locator.dart';
 
 import 'bloc/home_bloc.dart';
 
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: BlocProvider<HomeBloc>(
-        create: (context) => HomeBloc(homeRepository: HomeRepositoryImpl()),
+        create: (_) => HomeBloc(getUsersUseCase: getIt()),
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             return state.when(

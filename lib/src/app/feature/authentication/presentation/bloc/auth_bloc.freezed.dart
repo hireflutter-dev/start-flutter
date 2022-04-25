@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_bloc.dart';
 
@@ -37,6 +38,12 @@ mixin _$AuthEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? continueWithEmail,
+    TResult Function()? continueWithOTP,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? continueWithEmail,
     TResult Function()? continueWithOTP,
@@ -47,6 +54,12 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_ContinueWithEmail value) continueWithEmail,
     required TResult Function(_ContinueWithOTP value) continueWithOTP,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ContinueWithEmail value)? continueWithEmail,
+    TResult Function(_ContinueWithOTP value)? continueWithOTP,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -116,6 +129,15 @@ class _$_ContinueWithEmail extends _ContinueWithEmail {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? continueWithEmail,
+    TResult Function()? continueWithOTP,
+  }) {
+    return continueWithEmail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? continueWithEmail,
     TResult Function()? continueWithOTP,
@@ -134,6 +156,15 @@ class _$_ContinueWithEmail extends _ContinueWithEmail {
     required TResult Function(_ContinueWithOTP value) continueWithOTP,
   }) {
     return continueWithEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ContinueWithEmail value)? continueWithEmail,
+    TResult Function(_ContinueWithOTP value)? continueWithOTP,
+  }) {
+    return continueWithEmail?.call(this);
   }
 
   @override
@@ -197,6 +228,15 @@ class _$_ContinueWithOTP extends _ContinueWithOTP {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? continueWithEmail,
+    TResult Function()? continueWithOTP,
+  }) {
+    return continueWithOTP?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? continueWithEmail,
     TResult Function()? continueWithOTP,
@@ -215,6 +255,15 @@ class _$_ContinueWithOTP extends _ContinueWithOTP {
     required TResult Function(_ContinueWithOTP value) continueWithOTP,
   }) {
     return continueWithOTP(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ContinueWithEmail value)? continueWithEmail,
+    TResult Function(_ContinueWithOTP value)? continueWithOTP,
+  }) {
+    return continueWithOTP?.call(this);
   }
 
   @override
@@ -271,6 +320,14 @@ mixin _$AuthState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -285,6 +342,14 @@ mixin _$AuthState {
     required TResult Function(LoadingAuthState value) loading,
     required TResult Function(SuccessAuthState value) success,
     required TResult Function(ErrorAuthState value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialAuthState value)? initial,
+    TResult Function(LoadingAuthState value)? loading,
+    TResult Function(SuccessAuthState value)? success,
+    TResult Function(ErrorAuthState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -357,6 +422,17 @@ class _$InitialAuthState extends InitialAuthState {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -379,6 +455,17 @@ class _$InitialAuthState extends InitialAuthState {
     required TResult Function(ErrorAuthState value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialAuthState value)? initial,
+    TResult Function(LoadingAuthState value)? loading,
+    TResult Function(SuccessAuthState value)? success,
+    TResult Function(ErrorAuthState value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -446,6 +533,17 @@ class _$LoadingAuthState extends LoadingAuthState {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -468,6 +566,17 @@ class _$LoadingAuthState extends LoadingAuthState {
     required TResult Function(ErrorAuthState value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialAuthState value)? initial,
+    TResult Function(LoadingAuthState value)? loading,
+    TResult Function(SuccessAuthState value)? success,
+    TResult Function(ErrorAuthState value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -535,6 +644,17 @@ class _$SuccessAuthState extends SuccessAuthState {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) {
+    return success?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -557,6 +677,17 @@ class _$SuccessAuthState extends SuccessAuthState {
     required TResult Function(ErrorAuthState value) error,
   }) {
     return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialAuthState value)? initial,
+    TResult Function(LoadingAuthState value)? loading,
+    TResult Function(SuccessAuthState value)? success,
+    TResult Function(ErrorAuthState value)? error,
+  }) {
+    return success?.call(this);
   }
 
   @override
@@ -624,6 +755,17 @@ class _$ErrorAuthState extends ErrorAuthState {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? success,
+    TResult Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -646,6 +788,17 @@ class _$ErrorAuthState extends ErrorAuthState {
     required TResult Function(ErrorAuthState value) error,
   }) {
     return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialAuthState value)? initial,
+    TResult Function(LoadingAuthState value)? loading,
+    TResult Function(SuccessAuthState value)? success,
+    TResult Function(ErrorAuthState value)? error,
+  }) {
+    return error?.call(this);
   }
 
   @override

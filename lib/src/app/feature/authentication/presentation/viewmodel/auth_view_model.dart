@@ -20,8 +20,8 @@ class AuthViewModel extends ChangeNotifier {
   FirebaseAuthException? failureException;
   String? phoneNumber;
 
-  void setphoneNumber(String phoneNumber) {
-    phoneNumber = phoneNumber;
+  void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
     notifyListeners();
   }
 

@@ -1,8 +1,14 @@
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
@@ -14,8 +20,8 @@ import '../feature/home/presentation/home_screen.dart' as _i6;
 import '../feature/splash/splash_screen.dart' as _i3;
 import '../feature/email_authentication/presentation/verify.dart' as _i9;
 
-class AppRouter extends _i1.RootStackRouter {
-  AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
+class AppRouter extends _i5.RootStackRouter {
+  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -57,26 +63,35 @@ class AppRouter extends _i1.RootStackRouter {
       ];
 }
 
-class SplashScreen extends _i1.PageRouteInfo {
-  const SplashScreen() : super(name, path: '/');
+/// generated route for
+/// [_i1.SplashScreen]
+class SplashScreen extends _i5.PageRouteInfo<void> {
+  const SplashScreen() : super(SplashScreen.name, path: '/');
 
   static const String name = 'SplashScreen';
 }
 
-class LoginScreen extends _i1.PageRouteInfo {
-  const LoginScreen() : super(name, path: '/login');
+/// generated route for
+/// [_i2.LoginScreen]
+class LoginScreen extends _i5.PageRouteInfo<void> {
+  const LoginScreen() : super(LoginScreen.name, path: '/login');
 
   static const String name = 'LoginScreen';
 }
 
-class LoginVerifyScreen extends _i1.PageRouteInfo {
-  const LoginVerifyScreen() : super(name, path: '/loginviewscreen');
+/// generated route for
+/// [_i3.LoginVerifyScreen]
+class LoginVerifyScreen extends _i5.PageRouteInfo<void> {
+  const LoginVerifyScreen()
+      : super(LoginVerifyScreen.name, path: '/loginviewscreen');
 
   static const String name = 'LoginVerifyScreen';
 }
 
-class HomeScreen extends _i1.PageRouteInfo {
-  const HomeScreen() : super(name, path: '/homescreen');
+/// generated route for
+/// [_i4.HomeScreen]
+class HomeScreen extends _i5.PageRouteInfo<void> {
+  const HomeScreen() : super(HomeScreen.name, path: '/homescreen');
 
   static const String name = 'HomeScreen';
 }
