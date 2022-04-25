@@ -1,8 +1,12 @@
 import 'package:authentication_data/authentication_data.dart';
+import 'package:constant/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/authentication/presentation/widgets/icon_button.dart';
+import 'package:hf_flutter_starter_kit/src/app/feature/email_authentication/presentation/bloc/email_bloc.dart';
 import 'package:hf_flutter_starter_kit/src/config/color_config.dart';
 import 'package:provider/provider.dart';
-
+import '../../../router/router_constant.dart';
 import 'viewmodel/auth_view_model.dart';
 import 'widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -156,116 +160,182 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top,
-          left: width / 10,
-          right: width / 10,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: height / 7,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-                child: const Logo(),
-              ),
-              SizedBox(
-                height: height * 0.1,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+      body: Builder(builder: (context) {
+        return BlocConsumer<AuthenticationBloc, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSucceed) {
+              context.router.pushNamed(RouterConstant.homescreen);
+            } else if (state is AuthFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.message),
                 ),
-                height: height / 13,
-                width: 8 * (width / 10),
-                padding: const EdgeInsets.all(5),
-                child: Row(
+              );
+            }
+          },
+          buildWhen: (current, next) {
+            if (next is AuthSucceed) {
+              return false;
+            }
+            return true;
+          },
+          builder: (context, state) {
+            if (state is AuthInitial || state is AuthFailed) {
+              return Center(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Flexible(
-                      flex: 2,
-                      child: FittedBox(
-                        child: Material(
-                          child: InkWell(
-                            onTap: () async {
-                              _contryCodeDialogue();
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(
-                                  width: width * 0.01,
-                                ),
-                                Text(
-                                  '+' +
-                                      (dialCodes[_selectedDialCode]['number'] ??
-                                          ''),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      ?.copyWith(color: Styleguide.main),
-                                ),
-                                const Icon(Icons.arrow_drop_down),
-                              ],
-                            ),
-                          ),
-                        ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top,
+                        left: width / 10,
+                        right: width / 10,
                       ),
-                    ),
-                    Flexible(
-                      flex: 7,
-                      child: SizedBox(
-                        height: height / 13,
-                        child: TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Phone number',
-                          ),
-                          controller: _controller,
-                          cursorWidth: 3,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline3
-                              ?.copyWith(color: Styleguide.main),
-                          keyboardType: TextInputType.phone,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: height / 7,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: width * 0.05),
+                              child: const Logo(),
+                            ),
+                            SizedBox(
+                              height: height * 0.1,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              height: height / 13,
+                              width: 8 * (width / 10),
+                              padding: const EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Flexible(
+                                    flex: 2,
+                                    child: FittedBox(
+                                      child: Material(
+                                        child: InkWell(
+                                          onTap: () {
+                                            _contryCodeDialogue();
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              SizedBox(
+                                                width: width * 0.01,
+                                              ),
+                                              Text(
+                                                '+' +
+                                                    (dialCodes[_selectedDialCode]
+                                                            ['number'] ??
+                                                        ''),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1
+                                                    ?.copyWith(
+                                                        color: Styleguide.main),
+                                              ),
+                                              const Icon(Icons.arrow_drop_down),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    flex: 7,
+                                    child: SizedBox(
+                                      height: height / 13,
+                                      child: TextFormField(
+                                        decoration: const InputDecoration(
+                                          hintText: 'Phone number',
+                                        ),
+                                        controller: _controller,
+                                        cursorWidth: 3,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline3
+                                            ?.copyWith(color: Styleguide.main),
+                                        keyboardType: TextInputType.phone,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: height * 0.04,
+                            ),
+                            AppButton(
+                              height: height / 13,
+                              width: 8 * (width / 10),
+                              onPressed: () {
+                                if (_controller.text.isNotEmpty) {
+                                  /// Assign the value of [phoneNumber]
+                                  final AuthViewModel authViewModel =
+                                      Provider.of(context, listen: false);
+                                  authViewModel.setphoneNumber('+' +
+                                      dialCodes[_selectedDialCode]['number']! +
+                                      ' ' +
+                                      _controller.text);
+                                  context.router
+                                      .push(const LoginVerifyScreen());
+                                }
+                              },
+                              child: Text(
+                                'SEND OTP',
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
+                            ),
+                            Text("Or",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5
+                                    ?.copyWith(
+                                      color: (Styleguide.colorTransparent),
+                                    )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomIcons(
+                                  image: ImageConstant.google,
+                                  ontap: () =>
+                                      BlocProvider.of<AuthenticationBloc>(
+                                              context)
+                                          .add(AuthenticationGoogleStarted()),
+                                ),
+                                CustomIcons(
+                                  image: ImageConstant.email,
+                                  ontap: () {
+                                    context.router
+                                        .pushNamed(RouterConstant.signup);
+                                  },
+                                )
+                              ],
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              AppButton(
-                height: height / 13,
-                width: 8 * (width / 10),
-                onPressed: () {
-                  if (_controller.text.isNotEmpty) {
-                    /// Assign the value of [phoneNumber]
-                    final AuthViewModel authViewModel =
-                        Provider.of(context, listen: false);
-                    authViewModel.setPhoneNumber('+' +
-                        dialCodes[_selectedDialCode]['number']! +
-                        ' ' +
-                        _controller.text);
-                    context.router.push(const LoginVerifyScreen());
-                  }
-                },
-                child: Text(
-                  'SEND OTP',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+              );
+            } else if (state is AuthLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return const Center(child: SizedBox.shrink());
+          },
+        );
+      }),
     );
   }
 }
