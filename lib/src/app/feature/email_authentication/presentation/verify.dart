@@ -52,9 +52,14 @@ class _VerifyScreenState extends State<VerifyScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text('An email has been sent to ${user.email} \n Please verify....',textAlign: TextAlign.center, style:Theme.of(context).textTheme.headline5!.copyWith(
-                          fontWeight: FontWeight.w400
-                        ),),
+            child: Text(
+              'An email has been sent to ${user.email} \n Please verify....',
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5!
+                  .copyWith(fontWeight: FontWeight.w400),
+            ),
           ),
           SizedBox(
             height: height * 0.1,
@@ -81,8 +86,8 @@ class _VerifyScreenState extends State<VerifyScreen> {
       timer.cancel();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content:  Text("Email Verified...."),
-          duration: Duration(seconds: 3),
+          content: Text("Email Verified...."),
+          duration: Duration(seconds: 1),
           backgroundColor: Styleguide.colorGreen_1,
         ),
       );

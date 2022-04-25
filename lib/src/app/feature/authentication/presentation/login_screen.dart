@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Builder(builder: (context) {
         return BlocConsumer<AuthenticationBloc, AuthState>(
-           listener: (context, state) {
+          listener: (context, state) {
             if (state is AuthSucceed) {
               context.router.pushNamed(RouterConstant.homescreen);
             } else if (state is AuthFailed) {
@@ -180,8 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
             return true;
           },
           builder: (context, state) {
-            if (state is AuthInitial ||
-                state is AuthFailed) {
+            if (state is AuthInitial || state is AuthFailed) {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -194,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         right: width / 10,
                       ),
                       child: SingleChildScrollView(
-                            child: Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -225,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: FittedBox(
                                       child: Material(
                                         child: InkWell(
-                                          onTap: () async {
+                                          onTap: () {
                                             _contryCodeDialogue();
                                           },
                                           child: Row(
@@ -297,16 +296,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: Theme.of(context).textTheme.headline4,
                               ),
                             ),
-                            Text("Or", style: Theme.of(context)
+                            Text("Or",
+                                style: Theme.of(context)
                                     .textTheme
                                     .headline5
                                     ?.copyWith(
                                       color: (Styleguide.colorTransparent),
-                                    )),    
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                      CustomIcons(
+                                    )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomIcons(
                                   image: ImageConstant.google,
                                   ontap: () =>
                                       BlocProvider.of<AuthenticationBloc>(
@@ -316,26 +316,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                 CustomIcons(
                                   image: ImageConstant.email,
                                   ontap: () {
-                                    context.router.pushNamed(
-                                        RouterConstant.signup);
+                                    context.router
+                                        .pushNamed(RouterConstant.signup);
                                   },
                                 )
-                                    ],)
-                            ],
+                              ],
+                            )
+                          ],
                         ),
                       ),
                     ),
-                    
                   ],
                 ),
               );
             } else if (state is AuthLoading) {
               return const Center(child: CircularProgressIndicator());
             }
-            return const Center(
-                child:SizedBox.shrink());
+            return const Center(child: SizedBox.shrink());
           },
-         
         );
       }),
     );

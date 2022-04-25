@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 class AuthenticationDetail {
-
   AuthenticationDetail({
     required this.isValid,
     this.uid,

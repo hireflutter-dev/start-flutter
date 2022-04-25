@@ -29,10 +29,9 @@ class AuthenticationBloc extends Bloc<AuthEvent, AuthState> {
     if (event is SignInButtonPressed) {
       yield AuthLoading();
       try {
-       
-       final user=  await userRepository?.signIn(event.email, event.password);
-         yield AuthSucceed(user: user);
-        } catch (e) {
+        final user = await userRepository?.signIn(event.email, event.password);
+        yield AuthSucceed(user: user);
+      } catch (e) {
         yield AuthFailed(message: e.toString());
       }
     } else if (event is SignUpButtonPressed) {
@@ -40,7 +39,7 @@ class AuthenticationBloc extends Bloc<AuthEvent, AuthState> {
       try {
         add(VerificationMailSent());
         await userRepository?.signUp(event.email, event.password);
-     } catch (e) {
+      } catch (e) {
         if (e is FirebaseAuthException) {
           if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
             logger.w("Account Already exists");

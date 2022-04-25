@@ -21,7 +21,6 @@ class _EmailLoginState extends State<EmailLogin> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         appBar: AppBar(
           title: const Text("User Login"),
@@ -30,9 +29,9 @@ class _EmailLoginState extends State<EmailLogin> {
           key: _formKey,
           child: Column(
             children: [
-             
               Container(
-                   margin:const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
                 child: TextFormField(
                   autofocus: false,
                   decoration: InputDecoration(
@@ -56,7 +55,8 @@ class _EmailLoginState extends State<EmailLogin> {
                 ),
               ),
               Container(
-                   margin:const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
                 child: TextFormField(
                   autofocus: false,
                   obscureText: true,
@@ -89,9 +89,10 @@ class _EmailLoginState extends State<EmailLogin> {
                       backgroundColor: Styleguide.colorTransparent,
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                         context.read<AuthenticationBloc>().add(SignInButtonPressed(
-                              email: emailController.text,
-                              password: passwordController.text));
+                          context.read<AuthenticationBloc>().add(
+                              SignInButtonPressed(
+                                  email: emailController.text,
+                                  password: passwordController.text));
                         }
                       },
                       child: Text(
@@ -104,7 +105,7 @@ class _EmailLoginState extends State<EmailLogin> {
                   ],
                 ),
               ),
-               BlocListener<AuthenticationBloc, AuthState>(
+              BlocListener<AuthenticationBloc, AuthState>(
                 listener: (context, state) {
                   if (state is AuthSucceed) {
                     context.router.pushNamed(RouterConstant.homescreen);
@@ -132,7 +133,7 @@ class _EmailLoginState extends State<EmailLogin> {
                   },
                 ),
               ),
-              const SizedBox( height: 20 ),
+              const SizedBox(height: 20),
               SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

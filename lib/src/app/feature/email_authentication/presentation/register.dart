@@ -17,6 +17,26 @@ class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  String? isPasswordValid(String? value) {
+    final RegExp regex = RegExp(r'^.{6,}$');
+
+    if (value == null || value.isEmpty) {
+      return 'Please Enter Password';
+    } else if (!regex.hasMatch(value)) {
+      return ("Enter Valid Password(Min. 6 Character)");
+    }
+    return null;
+  }
+
+  String? isEmailValid(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please Enter Email';
+    } else if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+        .hasMatch(value)) {
+      return ("Please Enter a valid email");
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +48,6 @@ class _SignupState extends State<Signup> {
           key: _formKey,
           child: Column(
             children: [
-              
               Container(
                 margin:
                     const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
@@ -43,15 +62,7 @@ class _SignupState extends State<Signup> {
                         ),
                   ),
                   controller: emailController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Email';
-                    } else if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                        .hasMatch(value)) {
-                      return ("Please Enter a valid email");
-                    }
-                    return null;
-                  },
+                  validator: (value) => isEmailValid(value),
                 ),
               ),
               Container(
@@ -69,15 +80,7 @@ class _SignupState extends State<Signup> {
                         ),
                   ),
                   controller: passwordController,
-                  validator: (value) {
-                    final RegExp regex = RegExp(r'^.{6,}$');
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Password';
-                    } else if (!regex.hasMatch(value)) {
-                      return ("Enter Valid Password(Min. 6 Character)");
-                    }
-                    return null;
-                  },
+                  validator: (value) => isPasswordValid(value),
                 ),
               ),
               SizedBox(
@@ -105,7 +108,9 @@ class _SignupState extends State<Signup> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               BlocListener<AuthenticationBloc, AuthState>(
                 listener: (context, state) {
                   if (state is MailVerificationSent) {
@@ -150,7 +155,6 @@ class _SignupState extends State<Signup> {
                   ],
                 ),
               ),
-              
             ],
           ),
         ));

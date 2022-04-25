@@ -12,16 +12,14 @@ class UserRepository {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   User? user;
   late Timer timer;
-  bool isVerified = false;
   final logger = Logger();
   final AuthenticationFirebaseProvider? authenticationFirebaseProvider;
   final GoogleSignInProvider? googleSignInProvider;
   Future<User?> signUp(String email, String password) async {
     try {
-        final auth = await firebaseAuth.createUserWithEmailAndPassword(
-            email: email, password: password);
-        return auth.user;
-     
+      final auth = await firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return auth.user;
     } catch (e) {
       logger.d(e.toString());
     }

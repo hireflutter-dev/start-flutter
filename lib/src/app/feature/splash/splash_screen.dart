@@ -19,13 +19,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
       setState(() {
         _opacity = 1.0;
       });
       Timer(const Duration(seconds: 4), () async {
-          await FirebaseAuth.instance.currentUser?.reload();
-        if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
+        await FirebaseAuth.instance.currentUser?.reload();
+        if (FirebaseAuth.instance.currentUser?.emailVerified ??
+            false || FirebaseAuth.instance.currentUser?.phoneNumber != null) {
           context.router.replaceNamed(RouterConstant.homescreen);
         } else {
           context.router.replaceNamed(RouterConstant.login);
