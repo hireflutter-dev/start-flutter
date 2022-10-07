@@ -12,7 +12,7 @@ class AuthViewModel extends ChangeNotifier {
   // int? forceResendToken;
   ConfirmationResult? confirmationResult;
   bool codeSent = false;
-  String? smsCode;
+  String smsCode = '';
 
   bool hasTimedOut = false;
   bool verified = false;
@@ -77,7 +77,7 @@ class AuthViewModel extends ChangeNotifier {
   Future<bool> verifySmsCodeWeb() async {
     try {
       final UserCredential? userCredential =
-          await confirmationResult?.confirm('$smsCode');
+          await confirmationResult?.confirm(smsCode);
 
       return userCredential?.user?.uid != null ? true : false;
     } on FirebaseAuthException catch (e) {
@@ -99,18 +99,13 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<bool> phoneSignIn() async {
-    verified = true;
-
     firebaseAuthInstance = FirebaseAuth.instance;
     final UserCredential userCredential =
         await firebaseAuthInstance.signInWithCredential(phoneAuthCredential!);
 
     if ((userCredential.user != null)) {
-      verified = true;
       return true;
     } else {
-      verified = false;
-
       return false;
     }
   }

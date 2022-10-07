@@ -202,10 +202,6 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
       print('verificationId is null');
       return;
     }
-    if (smsCode == null) {
-      print('smsCode is null');
-      return;
-    }
 
     authViewModel.phoneAuthCredential = PhoneAuthProvider.credential(
       verificationId: verificationId,
