@@ -7,7 +7,7 @@ class AuthViewModel extends ChangeNotifier {
   late FirebaseAuth firebaseAuthInstance;
   PhoneAuthCredential? phoneAuthCredential;
   UserCredential? userCredential;
-  String verificationID = '';
+  String? verificationID;
   int? forceResendToken;
   // int? forceResendToken;
   ConfirmationResult? confirmationResult;
@@ -45,7 +45,7 @@ class AuthViewModel extends ChangeNotifier {
         // ));
       },
       codeSent: (verificationID, resendToken) {
-        verificationID = verificationID;
+        this.verificationID = verificationID;
         forceResendToken = resendToken;
         codeSent = true;
       },
