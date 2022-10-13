@@ -52,7 +52,7 @@ class AuthViewModel extends ChangeNotifier {
       codeAutoRetrievalTimeout: (verificationID) {
         hasTimedOut = true;
 
-        verificationID = verificationID;
+        this.verificationID = verificationID;
       },
       forceResendingToken: forceResendToken,
       timeout: const Duration(seconds: 30),

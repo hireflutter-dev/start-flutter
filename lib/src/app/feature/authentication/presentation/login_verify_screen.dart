@@ -182,6 +182,7 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
             : Colors.grey.shade500,
         child: _verifyButtonText(),
         onPressed: () async {
+          authViewModel.smsCode = authViewModel.digits.join();
           if (await authViewModel.verifySmsCodeWeb()) {
             context.router.pushNamed(RouterConstant.homescreen);
           }
