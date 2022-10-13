@@ -7,7 +7,7 @@ class AuthViewModel extends ChangeNotifier {
   late FirebaseAuth firebaseAuthInstance;
   PhoneAuthCredential? phoneAuthCredential;
   UserCredential? userCredential;
-  String verificationID = '';
+  String? verificationID;
   int? forceResendToken;
   // int? forceResendToken;
   ConfirmationResult? confirmationResult;

@@ -89,6 +89,9 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
                             focusNodes[i].unfocus();
                             if (i != 5) {
                               focusNodes[i + 1].requestFocus();
+                            } else {
+                              authViewModel.smsCode =
+                                  authViewModel.digits.join();
                             }
                           },
                         ),
@@ -194,11 +197,16 @@ class _LoginVerifyScreenState extends State<LoginVerifyScreen>
   }
 
   void _onPressed(AuthViewModel authViewModel) async {
-    authViewModel.smsCode = authViewModel.digits.join();
+    final verificationId = authViewModel.verificationID;
+    final smsCode = authViewModel.smsCode;
+    if (verificationId == null) {
+      print('verificationId is null');
+      return;
+    }
 
     authViewModel.phoneAuthCredential = PhoneAuthProvider.credential(
-      verificationId: authViewModel.verificationID,
-      smsCode: authViewModel.smsCode,
+      verificationId: verificationId,
+      smsCode: smsCode,
     );
     final bool phoneSignIn = await authViewModel.phoneSignIn();
     if (phoneSignIn) {
