@@ -1,0 +1,78 @@
+{
+  "project_info": {
+    "project_number": "102634114869",
+    "project_id": "starter-kit-c185b",
+    "storage_bucket": "starter-kit-c185b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102634114869:android:b205c46d07293e070b467c",
+        "android_client_info": {
+          "package_name": "dev.hireflutter.starterKit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102634114869-9llns4hd40thg3ru0b3nktcum4dc87o1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.hireflutter.starterKit",
+            "certificate_hash": "7445df0ae4ac9dd220500105d507a6be920970f2"
+          }
+        },
+        {
+          "client_id": "102634114869-a2chdjhoda4l6njfbqpjfa40i1dpm75l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.hireflutter.starterKit",
+            "certificate_hash": "12dd6836ff8bb503b6b6d84f27639a3a748257be"
+          }
+        },
+        {
+          "client_id": "102634114869-aiuh1jshlad0njrqsvvcsk2rvhgdbvjo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.hireflutter.starterKit",
+            "certificate_hash": "df2b8b3beb4ebf1ace7321037a3b3ec932bbbff9"
+          }
+        },
+        {
+          "client_id": "102634114869-r1vr6ba1galvckqcbe090l7dh8trlfdr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.hireflutter.starterKit",
+            "certificate_hash": "650f85215cf1cc57ef40494bbe3356008e69880b"
+          }
+        },
+        {
+          "client_id": "102634114869-ev0ube7in9mabt2ea0f9tlql2u4ua2qu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPtDVu8W3jZLGg3aWGFpxc1jXBfqoM7bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102634114869-ev0ube7in9mabt2ea0f9tlql2u4ua2qu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "102634114869-mddd70hff1kubm76lfl87kcufbrn9iik.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.hireflutter.starterKit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

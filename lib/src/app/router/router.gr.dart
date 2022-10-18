@@ -71,7 +71,7 @@ class AppRouter extends _i8.RootStackRouter {
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashScreen extends _i5.PageRouteInfo<void> {
+class SplashScreen extends _i8.PageRouteInfo<void> {
   const SplashScreen() : super(SplashScreen.name, path: '/');
 
   static const String name = 'SplashScreen';

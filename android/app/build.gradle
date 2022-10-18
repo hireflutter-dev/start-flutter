@@ -29,6 +29,19 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 31
 
+    flavorDimensions "app"
+    productFlavors {
+
+        dev {
+            dimension "app"
+            applicationId = "dev.hireflutter.starterKit"
+        }
+        prod {
+            dimension "app"
+            applicationId = "prod.hireflutter.starterKit"
+        }
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
