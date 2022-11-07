@@ -10,7 +10,16 @@ part 'email_event.dart';
 part 'email_state.dart';
 
 class AuthenticationBloc extends Bloc<AuthEvent, AuthState> {
-  AuthenticationBloc({this.userRepository}) : super(AuthInitial());
+  AuthenticationBloc({this.userRepository}) : super(AuthInitial()) {
+    on<SignInButtonPressed>(_signInButtonPressed);
+    on<SignUpButtonPressed>(_signUpButtonPressed);
+    on<AuthenticationStarted>(_authenticationStarted);
+    on<AuthenticationStateChanged>(_authenticationStateChanges);
+    on<AuthenticationGoogleStarted>(_authenticationGoogleStarted);
+    on<AuthenticationExited>(_authenticationExited);
+    on<VerificationMailSent>(_verificationMailSent);
+    on<GetUser>(_getUser);
+  }
 
   final UserRepository? userRepository;
   final logger = Logger();
@@ -22,93 +31,109 @@ class AuthenticationBloc extends Bloc<AuthEvent, AuthState> {
     return super.close();
   }
 
-  @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
-    if (event is SignInButtonPressed) {
-      yield AuthLoading();
-      try {
-        final user = await userRepository?.signIn(event.email, event.password);
-        yield AuthSucceed(user: user);
-      } catch (e) {
-        yield AuthFailed(message: e.toString());
-      }
-    } else if (event is SignUpButtonPressed) {
-      yield AuthLoading();
-      try {
-        add(VerificationMailSent());
-        await userRepository?.signUp(event.email, event.password);
-      } catch (e) {
-        if (e is FirebaseAuthException) {
-          if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
-            logger.w("Account Already exists");
-          } else if (e.code == 'weak-password') {
-            logger.w("Password Provided is too Weak");
-          }
-        }
-        yield AuthFailed(message: e.toString());
-      }
-    } else if (event is AuthenticationStarted) {
-      try {
-        yield AuthLoading();
-        authStreamSub =
-            userRepository!.getAuthDetailStream().listen((authDetail) {
-          add(AuthenticationStateChanged(authenticationDetail: authDetail));
-        });
-      } catch (error) {
-        logger.d(
-            'Error occured while fetching authentication detail : ${error.toString()}');
-        yield const AuthFailed(
-            message: 'Error occrued while fetching auth detail');
-      }
-    } else if (event is AuthenticationStateChanged) {
-      if (event.authenticationDetail.isValid!) {
-        yield AuthSucceed(authenticationDetail: event.authenticationDetail);
-      } else {
-        yield const AuthFailed(message: 'User has logged out');
-      }
-    } else if (event is AuthenticationGoogleStarted) {
-      try {
-        yield AuthLoading();
-        AuthenticationDetail authenticationDetail =
-            await userRepository!.authenticateWithGoogle();
+  FutureOr<void> _signInButtonPressed(
+      SignInButtonPressed event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      final user = await userRepository?.signIn(event.email, event.password);
+      emit(AuthSucceed(user: user));
+    } catch (e) {
+      emit(AuthFailed(message: e.toString()));
+    }
+  }
 
-        if (authenticationDetail.isValid!) {
-          yield AuthSucceed(authenticationDetail: authenticationDetail);
-        } else {
-          yield const AuthFailed(message: 'User detail not found.');
+  FutureOr<void> _signUpButtonPressed(
+      SignUpButtonPressed event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      add(VerificationMailSent());
+      await userRepository?.signUp(event.email, event.password);
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+          logger.w("Account Already exists");
+        } else if (e.code == 'weak-password') {
+          logger.w("Password Provided is too Weak");
         }
-      } catch (error) {
-        logger.d('Error occured while login with Google ${error.toString()}');
-        yield const AuthFailed(
-          message: 'Unable to login with Google. Try again.',
-        );
       }
-    } else if (event is AuthenticationExited) {
-      try {
-        yield AuthLoading();
-        await userRepository!.unAuthenticate();
-      } catch (error) {
-        logger.d('Error occured while logging out. : ${error.toString()}');
-        yield const AuthFailed(message: 'Unable to logout. Please try again.');
+      emit(AuthFailed(message: e.toString()));
+    }
+  }
+
+  FutureOr<void> _authenticationStarted(
+      AuthenticationStarted event, Emitter<AuthState> emit) {
+    try {
+      emit(AuthLoading());
+      authStreamSub =
+          userRepository!.getAuthDetailStream().listen((authDetail) {
+        add(AuthenticationStateChanged(authenticationDetail: authDetail));
+      });
+    } catch (error) {
+      logger.d(
+          'Error occured while fetching authentication detail : ${error.toString()}');
+      emit(const AuthFailed(
+          message: 'Error occrued while fetching auth detail'));
+    }
+  }
+
+  FutureOr<void> _authenticationStateChanges(
+      AuthenticationStateChanged event, Emitter<AuthState> emit) {
+    if (event.authenticationDetail.isValid!) {
+      emit(AuthSucceed(authenticationDetail: event.authenticationDetail));
+    } else {
+      emit(const AuthFailed(message: 'User has logged out'));
+    }
+  }
+
+  FutureOr<void> _authenticationGoogleStarted(
+      AuthenticationGoogleStarted event, Emitter<AuthState> emit) async {
+    try {
+      emit(AuthLoading());
+      AuthenticationDetail authenticationDetail =
+          await userRepository!.authenticateWithGoogle();
+
+      if (authenticationDetail.isValid!) {
+        emit(AuthSucceed(authenticationDetail: authenticationDetail));
+      } else {
+        emit(const AuthFailed(message: 'User detail not found.'));
       }
-    } else if (event is VerificationMailSent) {
-      try {
-        await userRepository?.sendVerificationEmail();
-        yield MailVerificationSent();
-      } catch (e) {
-        logger.d('Unable to send mail. Try again.');
-        yield const AuthFailed(message: 'Unable to logout. Please try again.');
-      }
-    } else if (event is GetUser) {
-      try {
-        await userRepository!.getCurrentUser();
-        yield CurrentUser();
-      } catch (e) {
-        logger.d(e);
-        yield AuthFailed(message: e.toString());
-      }
+    } catch (error) {
+      logger.d('Error occured while login with Google ${error.toString()}');
+      emit(const AuthFailed(
+        message: 'Unable to login with Google. Try again.',
+      ));
+    }
+  }
+
+  FutureOr<void> _authenticationExited(
+      AuthenticationExited event, Emitter<AuthState> emit) async {
+    try {
+      emit(AuthLoading());
+      await userRepository!.unAuthenticate();
+    } catch (error) {
+      logger.d('Error occured while logging out. : ${error.toString()}');
+      emit(const AuthFailed(message: 'Unable to logout. Please try again.'));
+    }
+  }
+
+  FutureOr<void> _verificationMailSent(
+      VerificationMailSent event, Emitter<AuthState> emit) async {
+    try {
+      await userRepository?.sendVerificationEmail();
+      emit(MailVerificationSent());
+    } catch (e) {
+      logger.d('Unable to send mail. Try again.');
+      emit(const AuthFailed(message: 'Unable to logout. Please try again.'));
+    }
+  }
+
+  FutureOr<void> _getUser(GetUser event, Emitter<AuthState> emit) async {
+    try {
+      await userRepository!.getCurrentUser();
+      emit(CurrentUser());
+    } catch (e) {
+      logger.d(e);
+      emit(AuthFailed(message: e.toString()));
     }
   }
 }
